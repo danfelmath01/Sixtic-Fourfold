@@ -7,4 +7,3 @@ Below, we present the codes used in the article to perform some of the calculati
 4) In "general Hodge cycles" we compute the rank of the matrix rho in order to determine if a cycle is a general Hodge cycle, and also we compute the tadpole associated to that cycle.
 
 
-If you have any inquiries, please feel free to correspond directly with the following email addresses: daflopezga@unal.edu.co or dflopezga@ime.usp.br.

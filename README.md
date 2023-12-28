@@ -1,8 +1,2 @@
-# Sixtic-Fourfold
-We give an explicit basis for the algebraic cycles of the sextic  Calabi-Yau fourfold. 
-
-Indlc: It is a list of the l.i. linear cycles used in the construction of the basis of algebraic cycles of the sixtic Calabi-Yau fourfold.
-
-IndAS: It is a list of the l.i. Aoki-Shioda cycles used in the construction of the basis of algebraic cycles of the sixtic Calabi-Yau fourfold.
-
-Indt3: It is a list of the l.i. type 3 cycles used in the construction of the basis of algebraic cycles of the sixtic Calabi-Yau fourfold.
+# More on G_4 flux and General Hodge Cycles on the Fermat Sextic
+Below, we present the codes used in the article to perform some of the calculations associated with algebraic cycles.

@@ -1,0 +1,52 @@
+LIB "HodgeProject.lib";
+
+int n=2; int d=6; 
+
+
+//  This example is defined in the ring R=Z[z] where z:=x+y and x=2^(1/3), y= e^(2ipi/12).
+
+int i; int j; int k; int l;
+ring R=(0,z),(x(0..2*n+1),c(1..1751)),dp;
+minpoly=z^12-3*z^10-8*z^9+6*z^8+17*z^6+84*z^5+42*z^4-76*z^3+129*z^2-60*z+25;
+
+
+// Load of basis of algebraic cycles (without the correction)
+string s=read("/home/daniel/Desktop/Sextic_quarfold_Computation/Ideals_of_algebraic_cycles/Basis_algebraic_cycles_without_the_correction.txt");                                                                 ////Warning modoify////
+execute("ideal Ialg0="+s+";");
+
+
+// Load of basis of algebraic cycles (with the correction)
+string s=read("/home/daniel/Desktop/Sextic_quarfold_Computation/Ideals_of_algebraic_cycles/Basis_algebraic_cycles_with_the_correction.txt");                                                                     ////Warning modoify////
+execute("ideal Ialg1="+s+";");
+
+// Load of ideal of monomials of degree 12 
+string s=read("/home/daniel/Desktop/Sextic_quarfold_Computation/Computation_of_determinant/Monomials_degree_12.txt");  ////Warning modoify////
+execute("ideal Imon="+s+";");
+
+
+
+// Creation of sum of coeffcients with the associated algebaric cycle for any index. For we have the next dictionary:
+// l -> Imon[l] -> Ic (complement) -> Sum= c_k*coefficient_k  (c_k the k-th algebraic cylce)
+poly Suma; poly Ic;
+
+matrix Idict0[1751][1751];  //Dictionay without the correction
+matrix Idict1[1751][1751];  //Dictionay with the correction
+for (i=1; i<=1751; i=i+1)
+{print("i=");print(i);
+     Ic=x(0)^4*x(1)^4*x(2)^4*x(3)^4*x(4)^4*x(5)^4/Imon[i]; // Complementary polynomial
+     for (k=1; k<=1751; k=k+1)   // Variation of the algebraic cycles
+     {
+         Idict0[i,k]=Ialg0[k]/Ic;
+         Idict1[i,k]=Ialg1[k]/Ic;      
+     }
+}
+
+
+////Warning modoify////
+write(":w /home/daniel/Desktop/Sextic_quarfold_Computation/Computation_of_determinant/Ideal_sum_of_coeff_of_alg_cycles_matrix_without_the_correction.txt",Idict0);
+
+write(":w /home/daniel/Desktop/Sextic_quarfold_Computation/Computation_of_determinant/Ideal_sum_of_coeff_of_alg_cycles_matrix_with_the_correction.txt",Idict1);
+
+
+
+

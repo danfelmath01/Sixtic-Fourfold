@@ -1,0 +1,38 @@
+LIB "HodgeProject.lib";
+list L=MonomialsDegree_d (5,6,4);
+
+int n=2; int d=6; int K=4;
+
+ring R = 0,(x(0..2*n+1),a(1..1751)),dp;
+
+
+int i; int j; int k; int l; int prod; 
+ideal BIG; ideal Big; poly P; list Pe;
+matrix M[426][426];
+
+
+
+string s=read("/home/daniel/Desktop/Sextic_quarfold_Computation/Computation_of_determinant/Monomials_degree_12.txt");  ////Warning modoify////
+execute("ideal I="+s+";");
+
+for(i=1;i<=426; i=i+1)
+{print("i=");print(i);
+     for(j=1;j<=426; j=j+1)
+     {  
+          P=monomial(L[i])*monomial(L[j]); 
+          Pe=L[i]+L[j];
+          prod=1;
+          for (k=1; k<=size(L[i]);k=k+1) {prod=prod*(Pe[1][k]<=4);};
+          if (prod==1)
+          {
+               for(l=1;l<=size(I); l=l+1)
+               {
+                    //if (P==I[l]){M[i,j]=a(l);}
+                    if (P==I[l]){M[i,j]=l;}
+               }
+          }
+     }
+}
+
+write(":w /home/daniel/Desktop/Sextic_quarfold_Computation/Computation_of_determinant/matrix_monomial_degree_12_in_numbers.txt",M);
+////Warning modoify////
